@@ -24,7 +24,7 @@
   @import '../styles/fonts';
   @import '../styles/common';
   body {
-    background: o-md-color('grey', 100);
+    background: o-md-color('grey', 200);
     color: o-md-color('grey', 700);
   }
   .app {

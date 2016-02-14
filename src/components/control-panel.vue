@@ -1,7 +1,14 @@
 <template lang="jade">
   .control-panel
+    label background
+    input(
+      type='checkbox'
+      v-model='background'
+      @change='toggleBackground'
+    )
+    br
     slider(
-      v-for='(k, v) in params',
+      v-for='(k, v) in sliders',
       :id='k',
       :label='v.label',
       :min='v.min',
@@ -25,17 +32,18 @@
       ColorSliders
     },
     computed: {
-      params() {
-        return store.state.params
+      sliders() {
+        return store.state.sliders
       },
-      test() {
-        return store.state.test
+      background() {
+        return store.state.toggles.background
       }
     },
     methods: {
       changeHandler(id, value) {
-        store.actions.setParamValue(id, value)
-      }
+        store.actions.setSliderValue(id, value)
+      },
+      toggleBackground: store.actions.toggleBackground
     }
   }
 </script>

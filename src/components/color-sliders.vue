@@ -35,7 +35,7 @@
   $shade: 900;
 
   input[type=range] {
-    
+
     &.slider__range--r {
       &::-webkit-slider-runnable-track {
         background: o-md-color('red', $shade - 300);
