@@ -1,4 +1,5 @@
 import THREE from 'three'
+import store from './store'
 
 export default class Drawing {
 
@@ -15,10 +16,11 @@ export default class Drawing {
     this.renderer.setSize(512, 512)
   }
 
-  render(params) {
+  render(params, colors) {
     this.clear()
+    const c = colors
     const material = new THREE.MeshBasicMaterial({
-      color: new THREE.Color('rgb(0,255,0)'),
+      color: new THREE.Color(`rgba(${c.r},${c.g},${c.b})`),
       wireframe: true,
       transparent: true
     })

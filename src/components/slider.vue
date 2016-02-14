@@ -2,6 +2,7 @@
   .slider
     label.slider__label {{label}}
     input.slider__range(
+      class='slider__range--{{id}}'
       type='range',
       :min='min',
       :max='max',
@@ -16,6 +17,7 @@
 
 <script>
   export default {
+    replace: false,
     props: {
       id:     { type: String,   required: true },
       label:  { type: String,   default: 'slider' },
@@ -35,7 +37,8 @@
       },
       mouseup(e) {
         if (this._mousedown) {
-          this.change(this.id, this.value)
+          // setting value on mouseup is not smooth
+          // this.change(this.id, this.value)
           this._mousedown = false
         }
       }
@@ -48,28 +51,32 @@
 
   .slider {
 
-    $track-color: o-md-color('grey', 500);
-    $knob-color: o-md-color('grey', 800);
+    $track-color: o-md-color('grey', 800);
+    $knob-color: o-md-color('grey', 900);
 
-    $knob-height: 4px;
-    $knob-size: 12px;
-    $label-width: 64px;
+    $knob-size: 10px;
+    $label-width: 48px;
 
     display: inline-flex;
-    // border: 1px dotted red;
 
     label {
       @include o-ellipsis;
       flex-basis: 32px;
       width: $label-width;
       min-width: $label-width;
-      text-align: center;
       font-family: $mono;
+      font-size: $unit - 2;
+      padding: 0 4px;
+      color: o-md-color('grey', 900);
+      &:first-child {
+        text-align: right;
+      }
     }
 
     input[type=range] {
       -webkit-appearance: none;
       width: 100%;
+      background: transparent;
     }
     input[type=range]:focus {
       outline: none;
@@ -81,11 +88,11 @@
       background: $track-color;
     }
     input[type=range]::-webkit-slider-thumb {
-      @include o-size($knob-size);
+      @include o-size($knob-size/2, $knob-size);
       -webkit-appearance: none;
-      background: $knob-color;
+      background: $track-color;
       cursor: pointer;
-      border-radius: 50%;
+      // border-radius: 50%;
       margin-top: $knob-size/2.75 * -1;
     }
   }

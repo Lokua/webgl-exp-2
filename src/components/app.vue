@@ -1,17 +1,21 @@
 <template lang="jade">
   .app
     control-panel
-    three-wrapper
+    drawing-canvas
 </template>
 
 <script>
   import ControlPanel from './control-panel'
-  import ThreeWrapper from './three-wrapper'
+  import DrawingCanvas from './drawing-canvas'
+  import store from '../app/store'
 
   export default {
     components: {
       ControlPanel,
-      ThreeWrapper
+      DrawingCanvas
+    },
+    ready() {
+      store.actions.render()
     }
   }
 </script>
@@ -19,17 +23,23 @@
 <style lang="scss">
   @import '../styles/fonts';
   @import '../styles/common';
+  body {
+    background: o-md-color('grey', 100);
+    color: o-md-color('grey', 700);
+  }
   .app {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     flex-wrap: wrap;
     font-family: $sans;
   }
-  control-panel,
-  three-wrapper {
+  control-panel {
     display: block;
-    flex-basis: 50%;
-    width: 512px;
-    min-width: 512px;
+    flex-basis: 25%;
+    max-width: 512px;
+    min-width: 310px;
+  }
+  drawing-canvas {
+    display: block;
   }
 </style>
