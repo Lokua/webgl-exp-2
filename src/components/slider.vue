@@ -44,7 +44,7 @@
 </script>
 
 <style lang="scss">
-  @import '../common';
+  @import '../styles/common';
 
   .slider {
 
@@ -56,7 +56,7 @@
     $label-width: 64px;
 
     display: inline-flex;
-    border: 1px dotted red;
+    // border: 1px dotted red;
 
     label {
       @include o-ellipsis;

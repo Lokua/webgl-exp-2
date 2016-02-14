@@ -14,9 +14,11 @@
 
 <script>
   import Slider from './slider'
-  import bus from '../bus'
+  import store from '../app/store'
+  import bus from '../app/bus'
 
   export default {
+    replace: false,
     components: {
       Slider
     },
@@ -31,6 +33,11 @@
         }
       }
     },
+    // computed: {
+    //   params() {
+    //     return store.state.params
+    //   }
+    // },
     methods: {
       changeHandler(id, value) {
         this.params[id].value = value
@@ -41,10 +48,8 @@
 </script>
 
 <style lang="scss">
-  @import '../fonts';
-  @import '../common';
-
-  body {
-    font-family: $sans;
+  @import '../styles/common';
+  .control-panel {
+    padding: $unit;
   }
 </style>

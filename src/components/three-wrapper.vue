@@ -5,8 +5,8 @@
 <script>
   import THREE from 'three'
   import Vue from 'vue'
-  import Drawing from '../drawing'
-  import bus from '../bus'
+  import Drawing from '../app/drawing'
+  import bus from '../app/bus'
 
   function filterParams(params) {
     const values = {}
@@ -17,6 +17,7 @@
   }
 
   export default {
+    replace: false,
     ready() {
       const drawing = new Drawing()
       this.$el.appendChild(drawing.renderer.domElement)

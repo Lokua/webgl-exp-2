@@ -18,7 +18,7 @@ export default class Drawing {
   render(params) {
     this.clear()
     const material = new THREE.MeshBasicMaterial({
-      color: 0xff0000,
+      color: new THREE.Color('rgb(0,255,0)'),
       wireframe: true,
       transparent: true
     })
